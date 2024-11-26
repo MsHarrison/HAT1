@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Studio Ghibli Movies</title>
+    </head>
+    <body>
+        <h1>Studio Ghibli Movies</h1>
+        <form method="post" action="/add">
+            <input type="text" name="item" placeholder="Add an item" required>
+            <button type="submit">Add movie</button>
+        </form>
+        <ul>
+            {% for item in items %}
+                <li>
+                    {{ item[1]}}
+                    <a href="/delete/{{ item[0] }}">Delete</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
