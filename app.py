@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
+from flask import Flask, render_template, request, redirect, url_for
+
 
 app = Flask(__name__)
 
@@ -24,7 +25,7 @@ def add_item():
     item = request.form['item']
     conn = sqlite3.connect('catalogue.db')
     c = conn.cursor()
-    c.execute('INSERT INTO items (item) VALUES (?)', (item,)) 
+    c.execute('INSERT INTO items (item) VALUES (?)', (item,))
     conn.commit()
     conn.close()
     return redirect(url_for('index'))
@@ -41,6 +42,3 @@ def delete_item(item_id):
 if __name__ == '__main__':
     create_database()
     app.run(debug=True)
-    
-         
-
